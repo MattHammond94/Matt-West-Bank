@@ -16,6 +16,17 @@ describe Statement do
       expect(statement1.all_transactions[2].amount).to eq(50.95)
     end
 
+    it 'Should add deposit objects to the transactions array when add_deposit is called' do
+      statement1 = Statement.new
+      withd1 = double(:withdrawal, amount: 54.99, date: "10/10/2023")
+      withd2 = double(:withdrawal, amount: 200.00, date: "08/08/2023")
+      statement1.take_withdrawal(withd1)
+      statement1.take_withdrawal(withd2)
+      expect(statement1.all_transactions.length).to eq(2)
+      expect(statement1.all_transactions[0].amount).to eq(54.99)
+      expect(statement1.all_transactions[0].date).to eq("10/10/2023")
+    end
+
     # it 'Should return a formatted list list of all transactions in order earliest date first' do
     #   deposit1 = double(:deposit, amount: 500.00, date: "06/12/2023")
     #   deposit2 = double(:deposit, amount: 50.00, date: "12/12/2023")

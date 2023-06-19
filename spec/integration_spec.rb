@@ -16,7 +16,7 @@ describe Statement do
       expect(statement1.all_transactions[2].amount).to eq(50.95)
     end
 
-    it 'Should add deposit objects to the transactions array when add_deposit is called' do
+    it 'Should add withdrawal objects to the transactions array when take_withdrawal is called' do
       statement1 = Statement.new
       withd1 = double(:withdrawal, amount: 54.99, date: "10/10/2023")
       withd2 = double(:withdrawal, amount: 200.00, date: "08/08/2023")

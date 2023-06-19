@@ -4,6 +4,10 @@ class Statement
     @transactions = []
   end
 
+  def print_header
+    "date || credit || debit || balance"
+  end
+
   def add_deposit(deposit)
     @transactions.push(deposit)
   end

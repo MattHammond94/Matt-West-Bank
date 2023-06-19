@@ -2,6 +2,11 @@ require 'statement'
 
 describe Statement do
   context 'Method functionality' do
+    it 'Should print the correct header when print_header is called' do
+      statement1 = Statement.new
+      expect(statement1.print_header).to eq("date || credit || debit || balance")
+    end
+
     it 'Should add deposit objects to the transactions array when add_deposit is called' do
       statement1 = Statement.new
       depo1 = Deposit.new(100.00)

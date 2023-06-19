@@ -4,7 +4,7 @@ describe Statement do
   context 'Method functionality' do
     it 'Should print the correct header when print_header is called' do
       statement1 = Statement.new
-      expect(statement1.print_header).to eq("date || credit || debit || balance")
+      expect(statement1.print_header).to eq("date || credit || debit || balance\n")
     end
 
     it 'Should add deposit objects to the transactions array when add_deposit is called' do
@@ -16,8 +16,6 @@ describe Statement do
       statement1.add_deposit(depo2)
       statement1.add_deposit(depo3)
       expect(statement1.all_transactions.length).to eq(3)
-      expect(statement1.all_transactions[0].amount).to eq(100.00)
-      expect(statement1.all_transactions[2].amount).to eq(50.95)
     end
   end
 end

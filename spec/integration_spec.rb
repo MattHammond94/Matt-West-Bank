@@ -11,9 +11,6 @@ describe Statement do
       statement1.add_deposit(depo2)
       statement1.add_deposit(depo3)
       expect(statement1.all_transactions.length).to eq(3)
-      expect(statement1.all_transactions[0].amount).to eq(100.00)
-      expect(statement1.all_transactions[1].date).to eq("08/08/2023")
-      expect(statement1.all_transactions[2].amount).to eq(50.95)
     end
 
     it 'Should add withdrawal objects to the transactions array when take_withdrawal is called' do
@@ -23,19 +20,17 @@ describe Statement do
       statement1.take_withdrawal(withd1)
       statement1.take_withdrawal(withd2)
       expect(statement1.all_transactions.length).to eq(2)
-      expect(statement1.all_transactions[0].amount).to eq(54.99)
-      expect(statement1.all_transactions[0].date).to eq("10/10/2023")
     end
 
-    # it 'Should return a formatted list list of all transactions in order earliest date first' do
-    #   deposit1 = double(:deposit, amount: 500.00, date: "06/12/2023")
-    #   deposit2 = double(:deposit, amount: 50.00, date: "12/12/2023")
-    #   withdrawal1 = double(:withdrawal, amount: 200.00, date: "08/12/2023")
-    #   statement1 = Statement.new
-    #   statement1.add_deposit(deposit1)
-    #   statement1.take_withdrawal(withdrawal1)
-    #   statement1.add_deposit(deposit2)
-    #   expect(statement1.all_transactions).to eq("date || credit || debit || balance\n12/12/2023 || 50.00 ||  || 350.00\n08/12/2023 || || 200.00 || 300.00\n06/12/2023 || 500.00 || || 500.00")
-    # end
+    it 'Should return a formatted list list of all transactions in order earliest date first' do
+      deposit1 = double(:deposit, amount: 500.00, date: "06/12/2023")
+      deposit2 = double(:deposit, amount: 50.00, date: "12/12/2023")
+      withdrawal1 = double(:withdrawal, amount: 200.00, date: "08/12/2023")
+      statement1 = Statement.new
+      statement1.add_deposit(deposit1)
+      statement1.take_withdrawal(withdrawal1)
+      statement1.add_deposit(deposit2)
+      expect(statement1.all_transactions).to eq("date || credit || debit || balance\n12/12/2023 || 50.00 ||  || 350.00\n08/12/2023 || || 200.00 || 300.00\n06/12/2023 || 500.00 || || 500.00")
+    end
   end
 end

@@ -4,7 +4,11 @@ class Deposit
   attr_accessor :amount, :date
 
   def initialize(amount)
-    @amount = amount
-    @date = Date.today
+    if (!(amount.is_a?(Float)) || amount <= 0)
+      fail "Amount entered is invalid."
+    else
+      @amount = amount
+      @date = Date.today
+    end
   end
 end

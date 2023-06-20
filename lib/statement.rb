@@ -21,7 +21,7 @@ class Statement
   end
 
   def print_header
-    @io.puts "date || credit || debit || balance"
+    @transactions.empty? ? @io.puts("You do not have any transactions to display") : @io.puts("date || credit || debit || balance")
   end
 
   def print_statement

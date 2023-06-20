@@ -4,8 +4,17 @@ describe Statement do
   context 'Method functionality' do
     it 'Should print the correct header when print_header is called' do
       io = double :io
+      expect(io).to receive(:puts).with("You do not have any transactions to display").ordered
+      statement1 = Statement.new(io)
+      statement1.print_header
+    end
+
+    it 'Should print the correct header when print_header is called' do
+      io = double :io
+      depo1 = Deposit.new(200.00)
       expect(io).to receive(:puts).with("date || credit || debit || balance").ordered
       statement1 = Statement.new(io)
+      statement1.add_deposit(depo1)
       statement1.print_header
     end
 

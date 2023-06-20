@@ -12,8 +12,12 @@ class Statement
   end
 
   def take_withdrawal(withdrawal)
-    @current_balance -= withdrawal.amount
-    @transactions.push(formatter(withdrawal))
+    if withdrawal.amount > @current_balance 
+      fail 'Cannot make a withdrawal due to insufficient funds'
+    else
+      @current_balance -= withdrawal.amount
+      @transactions.push(formatter(withdrawal))
+    end
   end
 
   def print_header

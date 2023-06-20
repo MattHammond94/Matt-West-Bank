@@ -15,11 +15,13 @@ describe Statement do
 
     it 'Should add withdrawal objects to the transactions array when take_withdrawal is called' do
       statement1 = Statement.new(Kernel)
+      depo1 = double(:deposit, amount: 255.00, date: "10/10/2023")
       withd1 = double(:withdrawal, amount: 54.99, date: "10/10/2023")
       withd2 = double(:withdrawal, amount: 200.00, date: "08/08/2023")
+      statement1.add_deposit(depo1)
       statement1.take_withdrawal(withd1)
       statement1.take_withdrawal(withd2)
-      expect(statement1.all_transactions.length).to eq(2)
+      expect(statement1.all_transactions.length).to eq(3)
     end
 
     it 'Should return a formatted list list of all transactions in order earliest date first' do

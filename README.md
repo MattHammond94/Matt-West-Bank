@@ -7,7 +7,6 @@ Run the below from the command line:
 git clone https://github.com/MattHammond94/Matt-West-Bank.git
 cd Matt-West-Bank
 bundle install 
-
 ```
 You will now be able to run rspec from the command line(rspec has been configured with simplecov) to view the passing tests and test coverage. 
 
@@ -53,6 +52,7 @@ account.print_statement
 ```
 
 You can open the codebase in your code editor and make changes to the app.rb file as you see fit. You can then run `ruby app.rb` from the command line to view the results as below:
+
 ![running app using app.rb](App.png)
 
 Alternatively the program can be run using IRB by doing the following: 

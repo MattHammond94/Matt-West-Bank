@@ -10,7 +10,7 @@ describe  do
 
     it 'Should return the correct date when date is called' do
       withdrawal1 = Withdrawal.new(100.00)
-      date = Date.today
+      date = Date.today.strftime('%d-%m-%Y')
       expect(withdrawal1.date).to eq(date)
     end
   end

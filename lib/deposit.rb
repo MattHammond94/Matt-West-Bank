@@ -8,7 +8,7 @@ class Deposit
       fail "Amount entered is invalid."
     else
       @amount = amount
-      @date = Date.today
+      @date = Date.today.strftime('%d-%m-%Y')
     end
   end
 end

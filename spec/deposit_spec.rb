@@ -10,7 +10,7 @@ describe Deposit do
 
     it 'Should return the correct date when date is called' do
       deposit1 = Deposit.new(100.00)
-      date = Date.today
+      date = Date.today.strftime('%d-%m-%Y')
       expect(deposit1.date).to eq(date)
     end
   end

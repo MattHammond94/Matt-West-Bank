@@ -1,12 +1,13 @@
 class Statement
 
-  def initialize
+  def initialize(io)
     @current_balance = 0
     @transactions = []
+    @io = io
   end
 
   def print_header
-    "date || credit || debit || balance\n"
+    @io.puts "date || credit || debit || balance\n"
   end
 
   def add_deposit(deposit)
@@ -19,6 +20,10 @@ class Statement
     @current_balance -= withdrawal.amount
     formatted_withdrawal = "#{withdrawal.date} ||  || #{withdrawal.amount} || #{@current_balance}\n"
     @transactions.push(formatted_withdrawal)
+  end
+
+  def print_statement
+    @io.puts @transactions
   end
 
   def all_transactions

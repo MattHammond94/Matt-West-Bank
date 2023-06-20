@@ -3,12 +3,14 @@ require 'statement'
 describe Statement do
   context 'Method functionality' do
     it 'Should print the correct header when print_header is called' do
-      statement1 = Statement.new
-      expect(statement1.print_header).to eq("date || credit || debit || balance\n")
+      io = double :io
+      expect(io).to receive(:puts).with("date || credit || debit || balance\n").ordered
+      statement1 = Statement.new(io)
+      statement1.print_header
     end
 
     it 'Should add deposit objects to the transactions array when add_deposit is called' do
-      statement1 = Statement.new
+      statement1 = Statement.new(Kernel)
       depo1 = Deposit.new(100.00)
       depo2 = Deposit.new(200.00)
       depo3 = Deposit.new(50.95)

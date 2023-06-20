@@ -1,11 +1,11 @@
 require 'date'
 
-class Deposit 
+class Deposit
   attr_accessor :amount, :date
 
   def initialize(amount)
-    if (!(amount.is_a?(Float)) || amount <= 0)
-      fail "Amount entered is invalid."
+    if !amount.is_a?(Float) || amount <= 0
+      raise 'Amount entered is invalid.'
     else
       @amount = amount
       @date = Date.today.strftime('%d-%m-%Y')

@@ -17,13 +17,13 @@ describe  do
 
   context 'Fails/Error handling' do
     it 'Should return an error if amount entered is not a float type' do
-      expect { withdrawal1 = Withdrawal.new(10) }.to raise_error "Amount entered is invalid."
-      expect { withdrawal2 = Withdrawal.new("10") }.to raise_error "Amount entered is invalid."
-      expect { withdrawal3 = Withdrawal.new(nil) }.to raise_error "Amount entered is invalid."
+      expect { Withdrawal.new(10) }.to raise_error 'Amount entered is invalid.'
+      expect { Withdrawal.new('10') }.to raise_error 'Amount entered is invalid.'
+      expect { Withdrawal.new(nil) }.to raise_error 'Amount entered is invalid.'
     end
 
     it 'Should return an error if amount entered is less than 0' do
-      expect { withdrawal1 = Withdrawal.new(-12.00) }.to raise_error "Amount entered is invalid."
+      expect { Withdrawal.new(-12.00) }.to raise_error 'Amount entered is invalid.'
     end
   end
 end

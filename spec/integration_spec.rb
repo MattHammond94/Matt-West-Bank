@@ -29,7 +29,9 @@ describe Statement do
       deposit1 = double(:deposit, amount: 500.00, date: "06/12/2023")
       withdrawal1 = double(:withdrawal, amount: 200.00, date: "08/12/2023")
       deposit2 = double(:deposit, amount: 50.00, date: "12/12/2023")
-
+      allow(deposit1).to receive(:instance_of?).with(Deposit).and_return(true)
+      allow(deposit2).to receive(:instance_of?).with(Deposit).and_return(true)
+      allow(withdrawal1).to receive(:instance_of?).with(Deposit).and_return(false)
       statement1 = Statement.new(io)
       statement1.add_deposit(deposit1)
       statement1.take_withdrawal(withdrawal1)

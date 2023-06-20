@@ -4,7 +4,7 @@ describe Statement do
   context 'Method functionality' do
     it 'Should print the correct header when print_header is called' do
       io = double :io
-      expect(io).to receive(:puts).with("date || credit || debit || balance\n").ordered
+      expect(io).to receive(:puts).with("date || credit || debit || balance").ordered
       statement1 = Statement.new(io)
       statement1.print_header
     end

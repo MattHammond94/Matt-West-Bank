@@ -7,22 +7,27 @@ class Statement
   end
 
   def print_header
-    @io.puts "date || credit || debit || balance\n"
+    @io.puts "date || credit || debit || balance"
   end
 
   def add_deposit(deposit)
     @current_balance += deposit.amount
-    formatted_deposit = "#{deposit.date} || #{deposit.amount} ||  || #{@current_balance}\n"
+    deposit_value = format('%.2f', deposit.amount)
+    balance_value = format('%.2f', @current_balance)
+    formatted_deposit = "#{deposit.date} || #{deposit_value} ||  || #{balance_value}"
     @transactions.push(formatted_deposit)
   end
 
   def take_withdrawal(withdrawal)
     @current_balance -= withdrawal.amount
-    formatted_withdrawal = "#{withdrawal.date} ||  || #{withdrawal.amount} || #{@current_balance}\n"
+    withdrawal_value = format('%.2f', withdrawal.amount)
+    balance_value = format('%.2f', @current_balance)
+    formatted_withdrawal = "#{withdrawal.date} ||  || #{withdrawal_value} || #{balance_value}"
     @transactions.push(formatted_withdrawal)
   end
 
   def print_statement
+    print_header
     @io.puts @transactions
   end
 

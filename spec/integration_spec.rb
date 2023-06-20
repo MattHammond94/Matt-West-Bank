@@ -25,15 +25,15 @@ describe Statement do
     it 'Should return a formatted list list of all transactions in order earliest date first' do
       io = double :io
       expect(io).to receive(:puts).with("date || credit || debit || balance").ordered
-      expect(io).to receive(:puts).with(["12/12/2023 || 50.00 ||  || 350.00", "08/12/2023 || || 200.00 || 300.00", "06/12/2023 || 500.00 || || 500.00"]).ordered
+      expect(io).to receive(:puts).with(["12/12/2023 || 50.00 ||  || 350.00", "08/12/2023 ||  || 200.00 || 300.00", "06/12/2023 || 500.00 ||  || 500.00"]).ordered
       deposit1 = double(:deposit, amount: 500.00, date: "06/12/2023")
-      deposit2 = double(:deposit, amount: 50.00, date: "12/12/2023")
       withdrawal1 = double(:withdrawal, amount: 200.00, date: "08/12/2023")
+      deposit2 = double(:deposit, amount: 50.00, date: "12/12/2023")
 
       statement1 = Statement.new(io)
       statement1.add_deposit(deposit1)
-      statement1.add_deposit(deposit2)
       statement1.take_withdrawal(withdrawal1)
+      statement1.add_deposit(deposit2)
       statement1.print_statement
     end
   end

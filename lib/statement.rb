@@ -6,10 +6,6 @@ class Statement
     @io = io
   end
 
-  def print_header
-    @io.puts "date || credit || debit || balance"
-  end
-
   def add_deposit(deposit)
     @current_balance += deposit.amount
     deposit_value = format('%.2f', deposit.amount)
@@ -26,9 +22,13 @@ class Statement
     @transactions.push(formatted_withdrawal)
   end
 
+  def print_header
+    @io.puts "date || credit || debit || balance"
+  end
+
   def print_statement
     print_header
-    @io.puts @transactions
+    @io.puts @transactions.reverse
   end
 
   def all_transactions

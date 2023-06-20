@@ -20,4 +20,12 @@ describe Statement do
       expect(statement1.all_transactions.length).to eq(3)
     end
   end
+
+  context 'Fail/Error scenarios' do
+    it 'Should return an error when a withdrawal value higher than current deposit value is attempted' do
+      statement1 = Statement.new(Kernel)
+      withd1 = Withdrawal.new(100.00)
+      expect { statement1.take_withdrawal(withd1) }.to raise_error 'Cannot make a withdrawal due to insufficient funds'
+    end
+  end
 end

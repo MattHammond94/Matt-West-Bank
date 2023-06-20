@@ -1,27 +1,27 @@
-require 'statement'
+require 'account'
 
-describe Statement do 
+describe Account do 
   context 'Method functionality' do
     it 'Should add deposit objects to the transactions array when add_deposit is called' do
-      statement1 = Statement.new(Kernel)
+      account1 = Account.new(Kernel)
       depo1 = double(:deposit, amount: 100.00, date: '10/10/2023')
       depo2 = double(:deposit, amount: 200.00, date: '08/08/2023')
       depo3 = double(:deposit, amount: 50.95, date: '09/09/2023')
-      statement1.add_deposit(depo1)
-      statement1.add_deposit(depo2)
-      statement1.add_deposit(depo3)
-      expect(statement1.all_transactions.length).to eq(3)
+      account1.add_deposit(depo1)
+      account1.add_deposit(depo2)
+      account1.add_deposit(depo3)
+      expect(account1.all_transactions.length).to eq(3)
     end
 
     it 'Should add withdrawal objects to the transactions array when take_withdrawal is called' do
-      statement1 = Statement.new(Kernel)
+      account1 = Account.new(Kernel)
       depo1 = double(:deposit, amount: 255.00, date: '10/10/2023')
       withd1 = double(:withdrawal, amount: 54.99, date: '10/10/2023')
       withd2 = double(:withdrawal, amount: 200.00, date: '08/08/2023')
-      statement1.add_deposit(depo1)
-      statement1.take_withdrawal(withd1)
-      statement1.take_withdrawal(withd2)
-      expect(statement1.all_transactions.length).to eq(3)
+      account1.add_deposit(depo1)
+      account1.take_withdrawal(withd1)
+      account1.take_withdrawal(withd2)
+      expect(account1.all_transactions.length).to eq(3)
     end
 
     it 'Should return a formatted list list of all transactions in order earliest date first' do
@@ -34,11 +34,11 @@ describe Statement do
       allow(deposit1).to receive(:instance_of?).with(Deposit).and_return(true)
       allow(deposit2).to receive(:instance_of?).with(Deposit).and_return(true)
       allow(withdrawal1).to receive(:instance_of?).with(Deposit).and_return(false)
-      statement1 = Statement.new(io)
-      statement1.add_deposit(deposit1)
-      statement1.take_withdrawal(withdrawal1)
-      statement1.add_deposit(deposit2)
-      statement1.print_statement
+      account1 = Account.new(io)
+      account1.add_deposit(deposit1)
+      account1.take_withdrawal(withdrawal1)
+      account1.add_deposit(deposit2)
+      account1.print_statement
     end
   end
 end

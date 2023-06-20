@@ -1,4 +1,4 @@
-class Statement
+class Account
   def initialize(io)
     @current_balance = 0
     @transactions = []
